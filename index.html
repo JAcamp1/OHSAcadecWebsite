@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<HTML>
+    <HEAD>
+        <TITLE>Oakwood AcaDec Website</TITLE>
+        <meta name="viewport" content="initial-scale=1.0 width=device-width">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <LINK HREF="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" REL="stylesheet">
+        <LINK REL="stylesheet" HREF="style.css">
+        <SCRIPT SRC="index.js"></SCRIPT>
+    </HEAD>
+    <BODY>
+        <DIV CLASS="navbar" ID="navbar">
+            <IMG CLASS="navbarimg" SRC="./assets/images/oakwoodlogo.png"><DIV CLASS="navbarname">Oakwood Acadec</DIV>
+            <DIV CLASS="navbarright">
+                <A CLASS="navbutton" ID="about" HREF="#aboutpl">About Us</A>|
+                <A CLASS="navbutton" ID="about" HREF="#blogpl">Blog</A>|
+                <A CLASS="navbutton" ID="latestnews" HREF="#latestnewspl">Latest News</A>|
+                <A CLASS="navbutton" ID="scores" HREF="#scorespl">Scores</A>|
+                <A CLASS="navbutton" ID="involvement" HREF="#involvementpl">Get Involved <I CLASS="fa fa-angle-down"></I></A>
+
+                <!-- if not logged in show this -->
+                <A CLASS="navbuttonlogin" ID="login" HREF="#login">Login/Register</A>
+                
+
+                <!--if logged in show this--><!--
+                <A CLASS="navbutton" ID="myaccount" HREF="#account"><IMG CLASS="navpfp" SRC="./assets/images/nopfp.png"> Loris Morris <I CLASS="fa fa-angle-down"></I></A>
+                -->
+            </DIV>
+        </DIV>
+        <DIV CLASS="topbackground" ID="topbackground"></DIV>
+        <DIV CLASS="bodydiv">
+            <DIV CLASS="mainarea">
+                <DIV CLASS="headerbubble">
+                    <H1>Oakwood Academic Decathlon</H1>
+                    <DIV CLASS="ohsdivider"></DIV>
+                    <DIV CLASS="normaltext">Welcome to the Oakwood Academic Decathlon Website! We're a group of students who enjoy a good challenge and strive to represent our school and community in the United States Academic Decathlon (USAD). We also are a professional cult.</DIV>
+                    <DIV CLASS="smalltext" STYLE="margin-top: 10px; margin-bottom: 10px;"><CENTER>Learn More...</CENTER></DIV>
+                    <A CLASS="buttonabout" HREF="#aboutpl"><I CLASS="fa fa-angle-down"></I></A>
+                </DIV>
+
+                <DIV ID="aboutpl" STYLE="position: absolute; margin-top: -10px;"></DIV>
+                <DIV CLASS="headertext" STYLE="margin-top: 100px; margin-bottom: 5px;">About Us</DIV>
+                <DIV CLASS="ohsdivider"></DIV>
+                <DIV CLASS="normaltext">JACK READ THE HTML COMMENTS IN SOURCE. The Oakwood Academic Decathlon is a whatever whatever someone write a good description for me I'm too lazy. More stuff to fill up space bc I'm curious to see how this will look superficially but I don't really care so someone else write this part for me please.</DIV>
+                <DIV CLASS="card-area">
+
+                    <!-- Jack: programmatically generate these using js via api dynamically so we don't have to update these every year
+                    
+                        maybe try something like getting:
+                        > pfp
+                        > Name
+                        > Roles
+                        > Description
+
+                        > Then create the div using the "card" template below
+                    
+                        > Also, please give each role a unique color
+                    -->
+                    <DIV CLASS="card">
+                        <DIV>
+                            <IMG SRC="assets/images/nopfp.png" CLASS="card-pfp"><DIV CLASS="card-title">Loris Morris</DIV>
+                        </DIV>
+
+                        <DIV CLASS="role-badge">Coach</DIV>
+                        <DIV CLASS="card-description medium-h">
+                            Info goes here...<BR>
+
+                            Also blah blah blah stuff here whatever<BR>
+
+                            just testing<BR>
+
+                            this stuff will be overhauled by Jack eventually and generated w/ API so<BR>
+
+                            it doesn't matter much rn<BR>
+
+                            hello<BR>
+                        </DIV>
+                    </DIV>
+                    <DIV CLASS="card">
+                        <DIV>
+                            <IMG SRC="assets/images/nopfp.png" CLASS="card-pfp"><DIV CLASS="card-title">Michael R</DIV>
+                        </DIV>
+                        <DIV CLASS="role-badge">Captain</DIV><DIV CLASS="role-badge">Honors</DIV>
+                        <DIV CLASS="card-description medium-h">
+                            Info goes here...<BR>
+
+                            Also blah blah blah stuff here whatever<BR>
+
+                            just testing<BR>
+
+                            this stuff will be overhauled by Jack eventually and generated w/ API so<BR>
+
+                            it doesn't matter much rn<BR>
+                        </DIV>
+                    </DIV>
+                    <DIV CLASS="card">
+                        <DIV>
+                            <IMG SRC="assets/images/nopfp.png" CLASS="card-pfp"><DIV CLASS="card-title">Evan H</DIV>
+                        </DIV>                        
+                        <DIV CLASS="role-badge">Captain</DIV><DIV CLASS="role-badge">9-Member Team</DIV><DIV CLASS="role-badge">Honors</DIV>
+                        <DIV CLASS="card-description medium-h">
+                            Info goes here...
+                        </DIV>
+                    </DIV>
+                    <DIV CLASS="card">
+                        <DIV>
+                            <IMG SRC="assets/images/nopfp.png" CLASS="card-pfp"><DIV CLASS="card-title">Rebecca B</DIV>
+                        </DIV>                        
+                        <DIV CLASS="role-badge">Captain</DIV><DIV CLASS="role-badge">9-Member Team</DIV><DIV CLASS="role-badge">Scholastic</DIV>
+                        <DIV CLASS="card-description medium-h">
+                            Info goes here...
+                        </DIV>
+                    </DIV>
+                    <DIV CLASS="card">
+                        <DIV>
+                            <IMG SRC="assets/images/nopfp.png" CLASS="card-pfp"><DIV CLASS="card-title">Soren K</DIV>
+                        </DIV>                        
+                        <DIV CLASS="role-badge">Captain</DIV><DIV CLASS="role-badge">9-Member Team</DIV><DIV CLASS="role-badge">Varsity</DIV>
+                        <DIV CLASS="card-description medium-h">
+                            Info goes here...
+                        </DIV>
+                    </DIV>
+                </DIV>
+
+                <DIV ID="blogpl" STYLE="position: absolute; margin-top: -100px;"></DIV>
+                <DIV CLASS="headertext" STYLE="margin-top: 50px; margin-bottom: 5px;">Blog</DIV>
+                <DIV CLASS="ohsdivider"></DIV>
+                <DIV CLASS="news">
+                    blog stuff
+                </DIV>
+
+                <DIV ID="latestnewspl" STYLE="position: absolute; margin-top: -100px;"></DIV>
+                <DIV CLASS="headertext" STYLE="margin-top: 50px; margin-bottom: 5px;">News</DIV>
+                <DIV CLASS="ohsdivider"></DIV>
+                <DIV CLASS="news">
+                    news stuff and articles
+                </DIV>
+
+                <DIV ID="scorespl" STYLE="position: absolute; margin-top: -100px;"></DIV>
+                <DIV CLASS="headertext" STYLE="margin-top: 50px; margin-bottom: 5px;">Scores</DIV>
+                <DIV CLASS="ohsdivider"></DIV>
+                <DIV CLASS="news">
+                    <CENTER><B><DIV STYLE="font-size: 17px; text-decoration: underline">All-time Top 10 Scores</DIV></B></CENTER>
+                    <TABLE ID="scores-table" CLASS="scores-table">
+                        <TR><!-- JACK: please include all of these values in api-->
+                            <TH>Name</TH>
+                            <TH>Score</TH>
+                            <TH>Year Achieved</TH>
+                            <TH>Competition</TH>
+                        </TR>
+                        <TR>
+                            <TD>Boe Jiden</TD>
+                            <TD>10000</TD>
+                            <TD>2068-2069</TD>
+                            <TD>Regionals</TD>
+                        </TR>
+                        <TR>
+                            <TD>Bobux Man</TD>
+                            <TD>6969</TD>
+                            <TD>2021-2022</TD>
+                            <TD>States</TD>
+                        </TR>
+                        <TR>
+                            <TD>Bruh Momento</TD>
+                            <TD>420</TD>
+                            <TD>2010-2011</TD>
+                            <TD>Nationals</TD>
+                        </TR>
+                        <TR>
+                            <TD>ae</TD>
+                            <TD>69</TD>
+                            <TD>2010-2011</TD>
+                            <TD>Nationals</TD>
+                        </TR>
+                    </TABLE>
+                </DIV>
+            </DIV>
+        </DIV>
+    </BODY>
+</HTML>
