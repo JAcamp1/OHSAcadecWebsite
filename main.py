@@ -1,6 +1,8 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_sqlalchemy import SQLAlchemy, Model
 from werkzeug.security import generate_password_hash, check_password_hash
+import numpy as np
+import pandas as pd
 
 app = Flask(__name__)
 
