@@ -72,8 +72,10 @@
             <!-- scores -->
             <DIV ID="scores" STYLE="position: absolute; margin-top: -80px;"></DIV>
             <DIV CLASS="c-scorestables">
-                <DIV CLASS="c-sc-navbar"><BUTTON ID="showquizbtn" CLASS="c-sc-selected" ONCLICK="showQuizScores()">Quiz Scores</BUTTON> | <BUTTON ID="showcompbtn" ONCLICK="showCompScores()">Competition Scores</BUTTON></DIV>
+                <DIV CLASS="c-main-title">My Scores</DIV>
+                <DIV CLASS="c-sc-navbar"><BUTTON ID="showquizbtn" CLASS="c-sc-selected" ONCLICK="showQuizScores()">Practice Quiz Scores</BUTTON> | <BUTTON ID="showcompbtn" ONCLICK="showCompScores()">Competition Scores</BUTTON></DIV>
                 <DIV ID="quizscoresarea">
+                    <INPUT CLASS="c-s-searchbar" ID="quizscoresearch" ONKEYUP="searchforscore('quiz', this.value)" PLACEHOLDER="Search for results...">
                     <TABLE CLASS="c-scorestable" ID="quizscores">
                         <TR>
                             <TH>Name</TH>
@@ -102,6 +104,7 @@
                     </TABLE>
                 </DIV>
                 <DIV ID="compscoresarea" STYLE="display: none;">
+                    <INPUT CLASS="c-s-searchbar" ID="quizscoresearch" ONKEYUP="searchforscore('quiz', this.value)" PLACEHOLDER="Search for results...">
                     <TABLE CLASS="c-scorestable" ID="compscores">
                         <TR>
                             <TH>Name</TH>
@@ -128,6 +131,45 @@
                     </TABLE>
                 </DIV>
             </DIV>
+
+            <!-- scores -->
+            <DIV ID="upcoming" STYLE="position: absolute; margin-top: -80px;"></DIV>
+            <DIV CLASS="c-upcoming">
+                <DIV CLASS="c-main-title">Upcoming Events</DIV>
+
+                <!--but yeah just this format really-->
+                <DIV CLASS="c-event">
+                    <DIV CLASS="c-event-title">Nationals | 4/20/2022</DIV><DIV CLASS="c-event-label" STYLE="background: #f79205">Competition</DIV>
+                    <DIV CLASS="c-event-description">This is the day that nationals will occur. You will literally explode on that day. Also don't forget to drink water, the most essential resource.</DIV>
+                    <DIV CLASS="c-event-author">Posted by Loris Morris on 6/9/2021</DIV>
+                </DIV>
+
+                <DIV CLASS="c-event">
+                    <DIV CLASS="c-event-title">Bruh Moment Day | 4/20/2022</DIV><DIV CLASS="c-event-label" STYLE="background: #05f725">Team Bonding</DIV>
+                    <DIV CLASS="c-event-description">Don't forget that this is a certified bruh moment day. Do not stop drinking water. You will literally drink water until there is no more water left because it is the most essential resource. Really long description right here just to test how the ui responds to multiple lines.</DIV>
+                    <DIV CLASS="c-event-author">Posted by Loris Morris on 6/9/2021</DIV>
+                </DIV>
+
+                <DIV CLASS="c-event">
+                    <DIV CLASS="c-event-title">Regionals | 4/69/2022</DIV><DIV CLASS="c-event-label" STYLE="background: #f79205">Competition</DIV>
+                    <DIV CLASS="c-event-description">This is the day that regionals will occur. You will literally drink water on that day. Also don't forget to drink water, the most essential resource.</DIV>
+                    <DIV CLASS="c-event-author">Posted by Loris Morris on 6/66/2021</DIV>
+                </DIV>
+
+                <DIV CLASS="c-event">
+                    <DIV CLASS="c-event-title">Scrimmage 2 | 4/20/2022</DIV><DIV CLASS="c-event-label" STYLE="background: #f79205">Competition</DIV>
+                    <DIV CLASS="c-event-description">This is the day that scrimmage 2 will occur. You will literally explode on that day. Also don't forget to drink water, the most essential resource.</DIV>
+                    <DIV CLASS="c-event-author">Posted by Loris Morris on 6/9/2021</DIV>
+                </DIV>
+
+                <A HREF="competitor/events" TARGET="_blank" CLASS="c-event-viewmore">View More Events <I CLASS="fa fa-external-link"></I></A>
+            </DIV>
+
+            <!-- bottom menu thing -->
+            <DIV CLASS="bottommenu">
+                &copy; Oakwood Academic Decathlon
+            </DIV>
+
         </DIV>
     </BODY>
 </HTML>

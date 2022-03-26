@@ -197,7 +197,7 @@ body {
     border-radius: 15px;
     text-align: center;
     display: inline-block;
-    margin-left: 40px;
+    margin-left: 60px;
 }
 
 .c-rl-table th {
@@ -245,7 +245,7 @@ body {
 
 .c-resource-info {
     display: inline-block;
-    margin-left: 40px;
+    margin-left: 60px;
     width: 60%;
     padding-top: 10px;
 }
@@ -260,7 +260,7 @@ body {
 }
 
 .c-scorestables {
-    margin-left: 40px;
+    margin-left: 60px;
     margin-top: 30px;
 }
 
@@ -302,7 +302,7 @@ body {
 }
 
 .c-scorestable {
-    margin-top: 15px;
+    margin-top: 10px;
     border: 1px solid var(--medium);
     border-collapse: collapse;
     font-size: 18px;
@@ -324,4 +324,78 @@ body {
 
 .c-scorestable tr:hover {
     background: #dbdbdb;
-  }
+}
+
+.c-s-searchbar {
+    padding: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+    -webkit-appearance: none;
+    border-bottom: 2px solid var(--blue);
+    border-top: 2px solid #ffffff;
+    border-right: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    width: 300px;
+    transition: 0.2s;
+}
+
+.c-s-searchbar:focus {
+    width: 400px;
+    border: 2px solid var(--blue);
+    outline: none;
+}
+
+.c-main-title {
+    font-size: 23px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.c-upcoming {
+    margin-left: 60px;
+    margin-top: 40px;
+}
+
+.c-event {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-right: 60px;
+}
+
+.c-event-title {
+    display: inline-block;
+    font-size: 22px;
+}
+
+.c-event-label {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 2px;
+    font-size: 15px;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.c-event-description {
+    margin-top: 5px;
+    font-size: 17px;
+}
+
+.c-event-author {
+    color: #575757;
+    font-size: 15px;
+}
+
+.c-event-viewmore {
+    color: var(--blue);
+    transition: 0.2s;
+    font-size: 17px;
+}
+
+.c-event-viewmore:hover {
+    color: var(--ohs-blue);
+}
+
+.c-event-viewmore:visited {
+    color: var(--blue);
+}

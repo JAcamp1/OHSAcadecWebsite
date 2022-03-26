@@ -346,3 +346,11 @@ h1 {
 .scores-table tr:hover {
   background: #dbdbdb;
 }
+
+.bottommenu {
+  background: var(--blue);
+  color: var(--light);
+  padding: 40px;
+  margin-top: 50px;
+  font-size: 17px;
+}

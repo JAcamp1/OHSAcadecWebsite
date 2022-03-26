@@ -47,3 +47,15 @@ function showCompScores() {
     document.getElementById("quizscoresarea").style.display = "none";
     document.getElementById("compscoresarea").style.display = "block";
 }
+
+function searchforscore(type, string) {
+    if(type === "quiz") {
+        //query quiz api
+        //then document.getElementById("quizscores") and set rows
+    } else if(type === "comp") {
+        //query competition results api
+        //then document.getElementById("compscores") and set rows
+    } else {
+        console.error("Not a valid search type. Must be 'quiz' or 'comp'");
+    }
+}
