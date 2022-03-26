@@ -89,6 +89,7 @@ h1 {
   left: 0;
   z-index: 99;
   color: var(--dark);
+  height: 52px;
 }
 
 .navbarimg {

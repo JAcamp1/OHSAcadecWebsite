@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<HTML LANG="en">
+    <HEAD>
+        <meta charset="UTF-8">
+        <TITLE>User Dashboard | Oakwood AcaDec Website</TITLE>
+        <meta name="viewport" content="initial-scale=1.0 width=device-width">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <LINK HREF="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" REL="stylesheet">
+        <LINK REL="stylesheet" HREF="{{ url_for('static', filename='styles/style.css') }}">
+        <LINK REL="stylesheet" HREF="{{ url_for('static', filename='styles/competitor.css') }}">
+        <SCRIPT SRC="{{url_for('static', filename='scripts/index.js') }}"></SCRIPT>
+    </HEAD>
+    <BODY>
+        <DIV CLASS="navbar" ID="navbar">
+            <IMG CLASS="navbarimg" SRC="{{url_for('static', filename='assets/images/oakwoodlogo.png')}}"><DIV CLASS="navbarname">Oakwood Acadec</DIV>
+            <DIV CLASS="navbarright">
+
+                <A CLASS="navbutton" STYLE="margin-top: -10px;" ID="myaccount" HREF="#account"><IMG CLASS="navpfp" SRC="{{url_for('static', filename='assets/images/nopfp.png')}}"> Loris Morris <I CLASS="fa fa-angle-down"></I></A>
+            </DIV>
+        </DIV>
+
+        <DIV CLASS="c-top">
+            <DIV CLASS="c-background"></DIV>
+            <DIV CLASS="c-foreground">
+                <DIV CLASS="c-f-left">
+                    <DIV CLASS="welcomemsg">
+                        Welcome back,<BR>Boe Jiden
+                    </DIV>
+                    <DIV CLASS="c-f-buttons-container">
+                        <BUTTON CLASS="c-f-buttons c-b-blue" ONCLICK="gotoDiv('resources')"><I CLASS="fa fa-book"></I> My Resources</BUTTON>
+                        <BUTTON CLASS="c-f-buttons c-b-orange" ONCLICK="gotoDiv('scores')"><I CLASS="fa fa-th-list"></I> Scores</BUTTON>
+                        <BUTTON CLASS="c-f-buttons c-b-green" ONCLICK="gotoDiv('upcoming')"><I CLASS="fa fa-calendar"></I> Upcoming</BUTTON>
+                    </DIV>
+                </DIV>
+
+                <DIV CLASS="c-f-right">
+                    <DIV CLASS="recommendedbinder">
+                        <IMG CLASS="r-binderimage" SRC="{{url_for('static', filename='assets/images/bindertemplate.png')}}">
+                        <DIV CLASS="c-rb-text">
+                            We recommend you study <DIV STYLE="font-size: 30px; font-weight: bold;">GAMING</DIV>
+                        </DIV>
+                    </DIV>
+                </DIV>
+            </DIV>
+        </DIV>
+
+        <DIV CLASS="c-body">
+            <!-- resources -->
+            <DIV ID="resources" STYLE="position: absolute; margin-top: -80px;"></DIV>
+            <DIV CLASS="c-resource-list">
+                <TABLE CLASS="c-rl-table">
+                    <TBODY>
+                        <TR><TH>My Resources</TH></TR>
+                        <!-- getResources needs an api as well -->
+                        <TR><TD><BUTTON ONCLICK="getResources(this, 'art')" CLASS="c-rlt-button c-r-selected">Art<DIV CLASS="c-rlt-button-r"><I CLASS="fa fa-angle-right"></I></DIV></BUTTON></TD></TR>
+                        <TR><TD><BUTTON ONCLICK="getResources(this, 'literature')" CLASS="c-rlt-button">Literature<DIV CLASS="c-rlt-button-r"><I CLASS="fa fa-angle-right"></I></DIV></BUTTON></TD></TR>
+                        <TR><TD><BUTTON ONCLICK="getResources(this, 'economics')" CLASS="c-rlt-button">Economics<DIV CLASS="c-rlt-button-r"><I CLASS="fa fa-angle-right"></I></DIV></BUTTON></TD></TR>
+                        <TR><TD><BUTTON ONCLICK="getResources(this, 'math')" CLASS="c-rlt-button">Math<DIV CLASS="c-rlt-button-r"><I CLASS="fa fa-angle-right"></I></DIV></BUTTON></TD></TR>
+                        <TR><TD><BUTTON ONCLICK="getResources(this, 'science')" CLASS="c-rlt-button">Science<DIV CLASS="c-rlt-button-r"><I CLASS="fa fa-angle-right"></I></DIV></BUTTON></TD></TR>
+                        <TR><TD><BUTTON ONCLICK="getResources(this, 'socialscience')" CLASS="c-rlt-button">Social Science<DIV CLASS="c-rlt-button-r"><I CLASS="fa fa-angle-right"></I></DIV></BUTTON></TD></TR>
+                        <TR><TD><BUTTON ONCLICK="getResources(this, 'speech')" CLASS="c-rlt-button">Speech<DIV CLASS="c-rlt-button-r"><I CLASS="fa fa-angle-right"></I></DIV></BUTTON></TD></TR>
+                        <TR><TD><BUTTON ONCLICK="getResources(this, 'interview')" CLASS="c-rlt-button">Interview<DIV CLASS="c-rlt-button-r"><I CLASS="fa fa-angle-right"></I></DIV></BUTTON></TD></TR>
+                        <TR><TD><BUTTON ONCLICK="getResources(this, 'essay')" CLASS="c-rlt-button">Essay<DIV CLASS="c-rlt-button-r"><I CLASS="fa fa-angle-right"></I></DIV></BUTTON></TD></TR>
+                    </TBODY>
+                </TABLE>
+                <DIV CLASS="c-resource-info">
+                    <DIV CLASS="c-ri-header" ID="resourcesheader">Art Resources</DIV>
+                    <DIV CLASS="c-ri-body" ID="resourcesbody">Loading...</DIV>
+                </DIV>
+            </DIV>
+
+            <!-- scores -->
+            <DIV ID="scores" STYLE="position: absolute; margin-top: -80px;"></DIV>
+            <DIV CLASS="c-scorestables">
+                <DIV CLASS="c-sc-navbar"><BUTTON ID="showquizbtn" CLASS="c-sc-selected" ONCLICK="showQuizScores()">Quiz Scores</BUTTON> | <BUTTON ID="showcompbtn" ONCLICK="showCompScores()">Competition Scores</BUTTON></DIV>
+                <DIV ID="quizscoresarea">
+                    <TABLE CLASS="c-scorestable" ID="quizscores">
+                        <TR>
+                            <TH>Name</TH>
+                            <TH>Date</TH>
+                            <TH>Score</TH>
+                        </TR>
+                        
+                        
+                        <TR>
+                            <TD>Economics Section I Exam DemiDec</TD>
+                            <TD>4/20</TD>
+                            <TD>690</TD>
+                        </TR>
+                        <TR>
+                            <TD>Economics Section II Exam DemiDec</TD>
+                            <TD>4/21</TD>
+                            <TD>6969</TD>
+                        </TR>
+                        <TR>
+                            <TD>Economics Section III Exam DemiDec</TD>
+                            <TD>4/22</TD>
+                            <TD>69420</TD>
+                        </TR>
+
+
+                    </TABLE>
+                </DIV>
+                <DIV ID="compscoresarea" STYLE="display: none;">
+                    <TABLE CLASS="c-scorestable" ID="compscores">
+                        <TR>
+                            <TH>Name</TH>
+                            <TH>Date</TH>
+                            <TH>Score</TH>
+                        </TR>
+
+                        <TR>
+                            <TD>Scrimmage I</TD>
+                            <TD>4/20</TD>
+                            <TD>6900</TD>
+                        </TR>
+                        <TR>
+                            <TD>Scrimmage II</TD>
+                            <TD>4/21</TD>
+                            <TD>6969</TD>
+                        </TR>
+                        <TR>
+                            <TD>Regionals</TD>
+                            <TD>4/22</TD>
+                            <TD>9999</TD>
+                        </TR>
+
+                    </TABLE>
+                </DIV>
+            </DIV>
+        </DIV>
+    </BODY>
+</HTML>

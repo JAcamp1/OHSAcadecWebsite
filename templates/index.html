@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
-<HTML>
+<HTML LANG="en">
     <HEAD>
+        <meta charset="UTF-8">
         <TITLE>Oakwood AcaDec Website</TITLE>
         <meta name="viewport" content="initial-scale=1.0 width=device-width">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,10 +21,10 @@
 
                 <!-- if not logged in show this -->
                 <A CLASS="navbuttonlogin" ID="login" HREF="#login">Login/Register</A>
-                
+            
 
                 <!--if logged in show this--><!--
-                <A CLASS="navbutton" ID="myaccount" HREF="#account"><IMG CLASS="navpfp" SRC="./assets/images/nopfp.png"> Loris Morris <I CLASS="fa fa-angle-down"></I></A>
+                <A CLASS="navbutton" ID="myaccount" STYLE="margin-top: -10px" HREF="#account"><IMG CLASS="navpfp" SRC="{{url_for('static', filename='assets/images/nopfp.png')}}"> Loris Morris <I CLASS="fa fa-angle-down"></I></A>
                 -->
             </DIV>
         </DIV>
