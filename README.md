@@ -20,3 +20,8 @@ scoreImport
 	
   -All optional items can be passed over with either no input or a blank definition such as "" or [].
 	
+	
+	
+TODO:
+>Add in leaderboard caching
+>Add reccomendation caching and calculation cycles
