@@ -3,7 +3,7 @@ import numpy as np
 from datetime import date
 import re
 
-def csvimport(inputFile, database):
+def csvimport(inputFile, database, dateOverride = "", ignore = [], addSuffix = ""):
     #loads up datafram from input file
     df = pd.read_csv(inputFile)
     print(df)
@@ -20,6 +20,9 @@ def csvimport(inputFile, database):
     while "Class Average" in names:
         print("Removing Average")
         names.remove("Class Average")
+    while "Average" in names:
+        print("Removing Average")
+        names.remove("Average")
 
     #Removes all category averages
     while "Honors" in names:
@@ -43,24 +46,45 @@ def csvimport(inputFile, database):
 
     #Makes a list of all the tests
     test = df.columns.to_list()
-    test.remove("Names")
+    if "Names" in test:
+        test.remove("Names")
+    if "Name" in test:
+        test.remove("Name")
+
+    for each in test:
+        for void in ignore:
+            if each.lower().find(void.lower()) != -1:
+                print(each)
+                print(void)
+                test.remove(each)
+
     print(test)
 
-    #pulls out date info and compiles it into list "dates"
-    for full in test:
-        splits = re.split(" ", full)
-        print(splits)
-        day = splits[0]
-        day = re.sub(r'[^\d/]', '', day)
-        if day.count("/") == 1:
-            day = day + "/" + str(date.today().year)
-        try:
-            dates.append(day)
-        except NameError:
-            dates = [day]
+
+    if dateOverride == "":
+        #pulls out date info and compiles it into list "dates"
+        for full in test:
+            splits = re.split(" ", full)
+            print(splits)
+            day = splits[0]
+            day = re.sub(r'[^\d/]', '', day)
+            if day.count("/") == 1:
+                day = day + "/" + str(date.today().year)
+            try:
+                dates.append(day)
+            except NameError:
+                dates = [day]
+    else:
+        for full in test:
+            day = dateOverride
+            try:
+                dates.append(day)
+            except NameError:
+                dates = [day]
 
     #Finds the subject area in the title and outputs as list "subjects"
     for title in test:
+        print(title)
         if "math" in title.lower():
             subject = "Mathematics"
         if "econ" in title.lower():
@@ -75,7 +99,13 @@ def csvimport(inputFile, database):
             if "social" in title.lower():
                 subject = "Social Science"
             else:
-                subject = "Math"
+                subject = "Science"
+        if "essay" in title.lower():
+            subject = "Essay"
+        if "interview" in title.lower():
+            subject = "Interview"
+        if "speech" in title.lower():
+            subject = "Speech"
         try:
             subjects.append(subject)
         except NameError:
@@ -101,24 +131,36 @@ def csvimport(inputFile, database):
         basic = []
         db[toAddName] = basic
 
+
     #Adds all tests as labels with Date and Category
     for toAddTest in toAddTests:
-        print(toAddTest)
-        db.at[toAddTest, "Date"] = dates[test.index(toAddTest)]
-        db.at[toAddTest, "Category"] = subjects[test.index(toAddTest)]
+        if addSuffix != "":
+            toAddTestName = toAddTest + " " + addSuffix
+        else:
+            toAddTestName = toAddTest
+        print(toAddTestName)
+        db.at[toAddTestName, "Date"] = dates[test.index(toAddTest)]
+        db.at[toAddTestName, "Category"] = subjects[test.index(toAddTest)]
+
+
 
     #Adds all values into the db
     for item in test:
         for name in names:
-            itemnum = test.index(item) + 1
-            namenum = names.index(name)
-            value = df.iloc[namenum, itemnum]
-            if not np.isnan(value):
-                db.at[item, name] = value
-                print(value)
+            value = df.iat[names.index(name), test.index(item) + 1]
+            try:
+                if not np.isnan(value):
+                    if addSuffix == "":
+                        db.at[item, name] = value
+                    else:
+                        db.at[item + " " + addSuffix, name] = value
+            except TypeError:
+                print("It failed idk, " + value)
             #else:
                 #print("No Value Given")
                 #This just floods shit
+
+
 
     input("Review Changes")
 
