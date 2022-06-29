@@ -2,8 +2,11 @@ import pandas as pd
 import numpy as np
 from datetime import date
 import re
+import requests
+import dataAnalysis
 
-def csvimport(inputFile, database, dateOverride = "", ignore = [], addSuffix = ""):
+#.CSV file import support
+def csvimport(inputFile, database, dateOverride = "", addSuffix = "", ignore = []):
     #loads up datafram from input file
     df = pd.read_csv(inputFile)
     print(df)
@@ -128,8 +131,7 @@ def csvimport(inputFile, database, dateOverride = "", ignore = [], addSuffix = "
 
     #Adds all names to the db
     for toAddName in toAddNames:
-        basic = []
-        db[toAddName] = basic
+        db.insert(len(db.columns), toAddName, 0)
 
 
     #Adds all tests as labels with Date and Category
@@ -149,7 +151,7 @@ def csvimport(inputFile, database, dateOverride = "", ignore = [], addSuffix = "
         for name in names:
             value = df.iat[names.index(name), test.index(item) + 1]
             try:
-                if not np.isnan(value):
+                if not pd.isna(value):
                     if addSuffix == "":
                         db.at[item, name] = value
                     else:
@@ -160,21 +162,54 @@ def csvimport(inputFile, database, dateOverride = "", ignore = [], addSuffix = "
                 #print("No Value Given")
                 #This just floods shit
 
-
-
     input("Review Changes")
 
     db.to_json(database)
     return db
 
-#Idk man, deprecated
-def cleandb(file):
-    df = pd.read_json(file)
-    print(df)
-    df.rename(columns={'Unnamed: 0': "Names"}, inplace=True)
-    df.drop(df.columns[df.columns.str.contains('Unnamed', case=False)], axis=1, inplace=True)
-    df.drop(df.columns[df.columns.str.contains('Running Average', case=False)], axis=1, inplace=True)
-    df.dropna(how="all")
-    print(df)
-    input("confirm solid change")
-    df.to_json(file)
+#Combines two columns because Peter is incompitent
+def cleandb(db, column1, column2):
+    print(db.columns)
+    values1 = db[column1].to_numpy()
+    values2 = db[column2].to_numpy()
+    proper1 = []
+    proper2 = []
+    for each in values1:
+        proper1.append(each == each)
+    for each in values2:
+        proper2.append(each != each)
+    print(proper1)
+    print(proper2)
+    bothTrue = [i==j and i for i, j in zip(proper1, proper2)]
+    print(bothTrue)
+    i = 0
+    while i <= len(bothTrue):
+        if bothTrue[i]:
+            db.at[column2, i] = db.at[column1, i]
+            print(db.at[column2, i])
+
+    return db
+
+def getcsv(url, name, database = "CSVURL.json"):
+    f = open("csv/" + name + ".csv", "wt")
+    text = requests.get(url).text
+    print(text)
+    f.write(text)
+    f.close()
+
+def addcsv(name, url, date, type, database = "CSVURL.json"):
+    db = pd.read_json(database)
+    db.at["url", name] = url
+    db.at["date", name] = date
+    db.at["type", name] = type
+    db.to_json(database)
+
+def csvupdate(database = "CSVURL.JSON"):
+    db = pd.read_json(database)
+    for csv in db.columns.tolist():
+        getcsv(db.at["url", csv], csv)
+        if db.at["type", csv].lower() == "comp":
+            output = "CompetitionScores.json"
+        else:
+            output = "nonCompScores.json"
+        csvimport("csv/" + csv + ".csv", output, db.at["date", csv], " " + csv)
